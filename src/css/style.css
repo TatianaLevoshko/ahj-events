@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -5,6 +11,18 @@
   width: 400px;
   height: 400px;
   margin: 0 auto;
+}
+
+.game-info {
+  display: block;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  width: 250px;
+  height: 150px;
+  padding: 5px 0px 25px 25px;
+}
+
+.text {
+  font-size: 1.5rem;
 }
 
 .cell {
@@ -18,8 +36,7 @@
   border-radius: 20px;
   transition: transform 0.2s ease-in-out;
 
-  cursor: pointer;
-  user-select: none;
+  cursor: url("../assets/hamm2.png"), auto;
 }
 
 .cell:hover {
@@ -27,7 +44,6 @@
   box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1), inset -3px -3px 8px rgba(255, 255, 255, 0.7),
               7px 7px 14px rgba(0, 0, 0, 0.1), -7px -7px 14px rgba(255, 255, 255, 0.7);
 }
-
 
 .goblin {
   background-size: cover;

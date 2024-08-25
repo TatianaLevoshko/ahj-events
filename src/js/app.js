@@ -1,7 +1,5 @@
 // TODO: write code here
-import Game from "./game.js";
-import Board from "./board.js";
-import Start from "./start.js";
+import Start from "./Start.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   Start.init();

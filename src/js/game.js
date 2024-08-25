@@ -3,7 +3,11 @@ export default class Game {
     this.board = document.querySelector(boardSelector);
     this.cells = [];
     this.goblinImgSrc = require("../assets/goblin.png");
+    this.hits = 0;
+    this.misses = 0;
+    this.maxMisses = 5;
     this.initBoard();
+    this.attachCursor();
   }
 
   initBoard() {
@@ -12,6 +16,39 @@ export default class Game {
       cell.classList.add("cell");
       this.board.appendChild(cell);
       this.cells.push(cell);
+    }
+  }
+
+  attachCursor() {
+    this.cells.forEach((cell) => {
+      cell.addEventListener("click", (event) => {
+        if (cell.firstChild && cell.firstChild.classList.contains("goblin")) {
+          this.updateScore(true, cell);
+          cell.firstChild.remove();
+        } else {
+          this.updateScore(false);
+        }
+      });
+    });
+  }
+
+  updateScore(hit = null) {
+    if (hit) {
+      this.hits++;
+      document.querySelector(".score.hit").textContent = this.hits;
+    } else {
+      this.misses++;
+      document.querySelector(".score.miss").textContent = this.misses;
+      if (this.misses >= this.maxMisses) {
+        alert("Игра окончена!");
+        clearInterval(this.intervalId);
+
+        this.hits = 0;
+        this.misses = 0;
+
+        document.querySelector(".score.hit").textContent = this.hits;
+        document.querySelector(".score.miss").textContent = this.misses;
+      }
     }
   }
 
@@ -29,7 +66,7 @@ export default class Game {
       let randomCellIndex;
       do {
         randomCellIndex = Math.floor(Math.random() * this.cells.length);
-      } while (randomCellIndex === previousCellIndex); // Убеждаемся, что новый индекс не равен предыдущему
+      } while (randomCellIndex === previousCellIndex);
 
       previousCellIndex = randomCellIndex;
       currentCell = this.cells[randomCellIndex];
