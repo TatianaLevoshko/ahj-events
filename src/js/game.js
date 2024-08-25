@@ -21,7 +21,7 @@ export default class Game {
 
   attachCursor() {
     this.cells.forEach((cell) => {
-      cell.addEventListener("click", (event) => {
+      cell.addEventListener("click", () => {
         if (cell.firstChild && cell.firstChild.classList.contains("goblin")) {
           this.updateScore(true, cell);
           cell.firstChild.remove();
