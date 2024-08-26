@@ -12,7 +12,7 @@
     "show:coverage": "live-server coverage/lcov-report",
     "preshow:dist": "npm run build",
     "show:dist": "http-server dist",
-    "clean": "rmdir /s /q dist",
+    "clean": "rmdir /s /q dist"
   },
   "author": "LevoshkoTatiana",
   "license": "MIT",
