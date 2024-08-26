@@ -1,4 +1,4 @@
-import Start from "./start";
+import Start from "./start.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   Start.init();
